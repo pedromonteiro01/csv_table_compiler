@@ -1,0 +1,19 @@
+int a = 2
+string s = "ola"
+boolean b = true
+double d = 2.1
+int novo_a
+novo_a = 3
+int soma = 2 + 3
+int mult
+mult = soma * soma
+double div = 3.0 / 1.0
+print(mult + soma)
+
+if(mult == soma || novo_a == novo_a ){
+    print("correto")
+}
+int n = 2 
+for(m = 3 : 6){
+    print(n)
+}

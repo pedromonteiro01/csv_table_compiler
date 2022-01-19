@@ -1,0 +1,124 @@
+booleanValue ::= [
+   "true":"true",
+   "false":"false",
+   default:"null"
+]
+
+typeValue ::= [
+   "int":"Integer",
+   "double":"Double",
+   "boolean":"Boolean",
+   "string":"String",
+   "Table":"Table",
+   "column":"ArrayList<Object>",
+   default:"Null"
+]
+
+typeFormat ::= [
+   "int":"",
+   "real":"",
+   "boolean":"",
+   "string":"",
+   default:"null"
+]
+
+inputValues ::= [
+   "int":"sc.nextInt()",
+   "double" :  "sc.nextDouble()",
+   "string": "sc.nextLine()",
+   "default":"null"
+]
+
+// templates :
+
+module(name,stat) ::= <<
+import java.lang.Math;
+import java.util.*;
+import Files.*;
+import SecondaryGrammar.*;
+
+public class <name> {
+    public static void main(String[] args) {
+      <stats(stat)>
+    }
+}
+>>
+
+stats(stat) ::= <<
+<if(stat)><stat; separator="\n"><endif>
+>>
+
+decl(stat, type,var,value) ::= <<
+<stats(stat)>
+<typeValue.(type)> <var><if(value)> = <value><endif>;
+>>
+assign(stat,var,value) ::= <<
+<stats(stat)>
+<var><if(value)> = <value><endif>;
+>>
+
+print(stat,expr) ::= <<
+<stats(stat)>
+System.out.println(<expr>);
+>>
+printTable(stat,table) ::= <<
+<stats(stat)>
+<table>.writeToConsole();
+>>
+
+binaryExpr(stat, type, var, e1, op, e2) ::= <<
+<decl(stat, type, var, [e1,op,e2])>
+>>
+
+ifCondition(stat, bool, ifStat, elseStat) ::= <<
+<stats(stat)>
+if(<bool>){
+   <ifStat>
+}
+<if(elseStat)>else{
+   <elseStat>
+}<endif>
+>>
+
+for(stat, var, start, end, op, content) ::= <<
+<stats(stat)>
+for (int <var> = <start>; <var> <op> <end>; <var>++) {
+   <if(content)><content><endif>
+}
+>>
+
+input(stat,var,cmd,type) ::= <<
+Scanner sc = new Scanner(System.in);
+
+System.out.print(<cmd>);
+<decl(stat,type,var,inputValues.(type))>
+>>
+
+max(stat,type, var, op) ::= <<
+<decl(stat, type, var, op)>
+>>
+
+addValCol(table, column, value) ::= <<
+<table>.addToColumn(<column>, <value>);
+}
+>>
+addRow(table,temp, var, values) ::= <<
+String[] <temp> = <values>.split(",");
+int <var> = 0;
+for(String s : <temp>) {
+   <table>.addToColumn(<table>.getColumnNames().get(<var>), s.trim());
+   <var>++;
+}
+>>
+
+addCol(table, column, type) ::= "<table>.addColumn(<column>, <type>);"
+getCol(table,column) ::= "<table>.getColumnContent(<column>)"
+removeCol(table,column) ::= "<table>.removeColumn(<column>);"
+appendTable(table1, table2) ::= "appendTable(<table1>,<table2>)"
+getColNum(table1) ::= "<table1>.getColumnNames().size()"
+getRowNum(table1) ::= "<table1>.getTableSize()"
+writeToFile(table, file) ::= "<table>.checkTableFormat(<file>);"
+removeRowByIndex(table, idx) ::= "<table>.removeRowIndex(<idx>);"
+getRowFromIndex(table, idx) ::= "<table>.getRow(<idx>)"
+readFromFile(filename) ::= "Table.importFromFile(<filename>)"
+filterBy(table, operator, column, value) ::= "<table>.filterBy(<operator>, <column>, <value>)"

@@ -1,0 +1,14 @@
+new table "biblioteca"
+add col "LIVROS" to "biblioteca" type string
+add col "TIPOS" to "biblioteca" type string
+add col "EXEMPLARES" to "biblioteca" type int
+add col "AUTOR" to "biblioteca" type string
+add row "'Red Queen', 'Ficçao cientifica', 12, 'Victoria Aveyard'" to "biblioteca"
+add row "'Os Maias', 'Romance/Ficçao', 18, 'Eça de Queirós'" to "biblioteca"
+add row "'Segurança em Redes Informáticas', 'Educação', 6, 'André Zúquete'" to "biblioteca"
+add row "'Tales of Fire and Ice', 'Fantasia Épica', 100, 'George R. R. Martin'" to "biblioteca"
+add row "'Uma Aventura em Engenharia Informática', 'Educação', 1,'Grupo-09'" to "biblioteca"
+add row "'Os Lusíadas', 'Poesia', 22, 'Luíz Vaz de Camões'" to "biblioteca"
+print(biblioteca)
+
+int indice = input(int: "Introduza a linha [0-6]: ")

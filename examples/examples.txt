@@ -1,0 +1,28 @@
+new table "Notas"
+add col "NMEC" to "Notas" type int
+add col "Nome" to "Notas" type string
+add col "NotaT1" to "Notas" type double
+add col "NotaT2" to "Notas" type double
+add col "NotaP" to "Notas" type double
+add col "Media" to "Notas" type double
+//
+//
+add row "98119,Fábio Martins,15,15,15" to "Notas"
+add row "98629,Marta Fradique,15,15,15" to "Notas"
+add row "98597,José Trigo,15,15,15" to "Notas"
+add row "93107,Eduardo Santos,15,15,15" to "Notas"
+add row "97484,Pedro Monteiro,15,15,15" to "Notas"
+add row "97541,André Gomes,15,15,15" to "Notas"
+//
+//
+Linha4 = get row 4 from "Notas"
+NotasTeste1 = get col "NotaT1" from "Notas"  // retorna um array ou uma tabela com os valores das colunas
+//
+//
+//remove row where NMEC==98119 from "Notas"
+//
+//
+int chumbados =0
+/*if("NotaFinal"<10){
+chumbados = chumbados + 1 
+}*/

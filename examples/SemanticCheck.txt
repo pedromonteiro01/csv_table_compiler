@@ -1,0 +1,62 @@
+//a variable can only be declared one time 
+int a = 2
+int a = 3
+
+//check if a table already exists
+new table "tabela1" 
+new table "tabela1"
+
+// variable type a doesn't match expression type
+int a = "compiladores"
+
+// manipulate a variable that doens't exists
+print(t1)
+
+//to compare two values they must have the same type 
+string a = "compiladores"
+int b = 2
+if(a<b){int c}
+
+//When performing a boolean expression, both sides must produce a boolean!
+int a = 3
+int b = 4
+if(a == b|| a + b ){
+    print("errado")
+}
+
+//On a for cycle starting value can't be higher than ending value 
+int b = 4
+for(a = 8 : 7) {print(b)}
+
+//the program checks if the file exists 
+read table "t1" from "../examples/compilador.csv"
+
+//must create a table before using it 
+add col "col1" to "tabela1" type int
+
+//Table "tabela2" does not have that many columns!
+new table "tabela2"
+add col "col2" to "tabela2" type int
+add row "1,2" to "tabela2" 
+
+//Table "tabela2" does not have any columns!
+new table "tabela2"
+add row "1,2" to "tabela2"  
+
+//Table "tabela2"not possible to add a column that already exists 
+new table "tabela1" 
+add col "col1" to "tabela1" type int
+add col "col1" to "tabela1" type int
+
+
+//Table "tabela2" does not have such index!
+new table "tabela3"
+add col "col1" to "tabela3" type int
+add row "1" to "tabela3" 
+remove row index 3 from "tabela3"
+
+
+//Column "col2" does not exist in that table!
+new table "tabela4"
+add col "col1" to "tabela4" type int
+add val "1" to col "col2" in "tabela4"

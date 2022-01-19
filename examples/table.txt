@@ -1,0 +1,15 @@
+new table "tabela1" 
+add col "col1" to "tabela1" type int
+add row "1" to "tabela1" 
+column array1 = get col "col1" from "tabela1"
+int colSize = get col num "tabela1"
+int rowSize = get row num "tabela1"
+read table "t1" from "../examples/examples.csv"
+print(t1)
+new table "tabela2" 
+add col "col2" to "tabela2" type int
+column array2 = get col "col2" from "tabela2"
+
+
+Table t3 = append table "tabela1" to "tabela2"
+remove col "col2" from "tabela2"
